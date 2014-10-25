@@ -1,3 +1,11 @@
+//
+//  ofApp.cpp
+//  2d Pixel to Voxel Matrix
+//
+//  Created by Daniel Mastretta 10/2014.
+//
+//
+
 #include "ofApp.h"
 
 
@@ -7,10 +15,7 @@ void ofApp::setup(){
 ofSetVerticalSync(true);
 ofSetFrameRate(60);
 ofSetColor(100,75,200);
-front.loadImage("images/graham.png");
-
-
-//--------------------------- GETTING THE INFORMATION FROM THE IMAGE
+front.loadImage("images/link.png");
 
 int w = front.getWidth();
 int h = front.getHeight();
@@ -43,19 +48,20 @@ ofBackground(150);
 //--------------------------------------------------------------
 void ofApp::draw(){
 
-cam.begin();
-light.enable();
-ofEnableLighting();
-ofEnableDepthTest();
+
+    cam.begin();
+    light.enable();
+    ofEnableLighting();
+    glEnable(GL_DEPTH_TEST);
 
 for (int i = 0; i < myVoxels.size(); i++){
     myVoxels[i].draw();
-}
+    }
 
-ofDisableDepthTest();
-ofDisableLighting();
-light.disable();
-cam.end();
+    glDisable(GL_DEPTH_TEST);
+    ofDisableLighting();
+    light.disable();
+    cam.end();
 
 }
 
@@ -67,6 +73,9 @@ void ofApp::keyPressed(int key){
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
 
+    if (key == 'f'){
+        ofToggleFullscreen();
+    }
 }
 
 //--------------------------------------------------------------

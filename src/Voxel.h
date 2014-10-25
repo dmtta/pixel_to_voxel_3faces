@@ -1,4 +1,12 @@
 #pragma once
+//
+//  Voxel.cpp
+//  Voxel Class - 2d Pixel to Voxel Matrix
+//
+//  Created by Daniel Mastretta 10/2014.
+//
+//
+
 #include "ofMain.h"
 
 

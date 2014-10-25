@@ -1,3 +1,11 @@
+//
+//  ofApp.h
+//  2d Pixel to Voxel Matrix
+//
+//  Created by Daniel Mastretta 10/2014.
+//
+//
+
 #pragma once
 
 #include "ofMain.h"
