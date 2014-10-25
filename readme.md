@@ -6,6 +6,7 @@ Pixel to Voxel oF sketch
  made with of_v0.8.3_win_cb_release (sorry mac people)
  
  Daniel Mastretta. 10/2014 
+ 
  kudos to [@Gianordoli](https://github.com/gianordoli "Gianordoli") and [@whoisbma](https://github.com/whoisbma "whoisbma") who are coaching in the background
 
 
