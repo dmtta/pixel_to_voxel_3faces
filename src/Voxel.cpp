@@ -1,6 +1,6 @@
 //
 //  Voxel.cpp
-//  Voxel Class - 2d Pixel to Voxel Matrix
+//  Voxel Class -  2d Pixel to 3d Voxel Matrix - 3 Faces
 //
 //  Created by Daniel Mastretta 10/2014.
 //

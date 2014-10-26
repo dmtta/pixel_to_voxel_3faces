@@ -1,6 +1,6 @@
 //
 //  ofApp.h
-//  2d Pixel to Voxel Matrix
+//   2d Pixel to 3d Voxel Matrix - 3 Faces
 //
 //  Created by Daniel Mastretta 10/2014.
 //
@@ -28,14 +28,15 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 
-		ofImage front;
+		ofImage left;
+		ofImage right;
+		ofImage top;
 
 		ofPoint pos;
 
         ofEasyCam cam;
         ofLight light;
 
-        Voxel voxTest;
         vector <Voxel> myVoxels;
 
 };
