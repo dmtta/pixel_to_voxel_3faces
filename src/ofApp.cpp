@@ -17,20 +17,20 @@ ofSetFrameRate(60);
 ofSetColor(100,75,200);
 front.loadImage("images/link.png");
 
-int w = front.getWidth();
-int h = front.getHeight();
+int w = front.getWidth(); // width from the imported image
+int h = front.getHeight(); // height from the imported image
 
-unsigned char* pixels = front.getPixels();
+unsigned char* pixels = front.getPixels(); // I still don't understand what unsigned char* is but this line read the info of the pixels in the image
 
-for(int y = 0; y < h; y++) {
-		for(int x = 0; x < w; x++) {
-			ofColor voxColor = front.getColor(x,y);
-                if (voxColor.a != 0){
-			int voxSize = 10;
-			ofPoint voxPos = ofPoint(x*voxSize,y*voxSize,0);
-			Voxel thisVoxel;
-			thisVoxel.setInit(voxPos*1.3,voxSize,voxColor);
-			myVoxels.push_back(thisVoxel);
+for(int y = 0; y < h; y++) { // loops the height pixels from the image
+		for(int x = 0; x < w; x++) { // loops through the width pixels from the image
+			ofColor voxColor = front.getColor(y,x); // gets the color belonging to that particular pixel in the image
+                if (voxColor.a != 0){  // if the alpha channel of the image says it's transparent it ignores it.
+			int voxSize = 10;  // Dictamines the size the Voxels will have
+			ofPoint voxPos = ofPoint(x*voxSize,y*voxSize,0); // Determines position in space of the voxel
+			Voxel thisVoxel; // Creates an instance in memory of the voxel
+			thisVoxel.setInit(voxPos*1.3,voxSize,voxColor); // initializes the voxel's position and color
+			myVoxels.push_back(thisVoxel); // adds it to the array
 			}
 		}
 	}
@@ -48,16 +48,19 @@ ofBackground(150);
 //--------------------------------------------------------------
 void ofApp::draw(){
 
-
+// Camera and light stuff... urgh need to figure out this better.
     cam.begin();
     light.enable();
     ofEnableLighting();
     glEnable(GL_DEPTH_TEST);
 
+// draw every voxel
 for (int i = 0; i < myVoxels.size(); i++){
     myVoxels[i].draw();
     }
 
+
+// Disable camera and light systems.
     glDisable(GL_DEPTH_TEST);
     ofDisableLighting();
     light.disable();
