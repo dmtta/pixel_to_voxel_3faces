@@ -12,6 +12,9 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
 
+ofSetVerticalSync(true);
+ofSetFrameRate(60);
+
 // load the images first
 
 top.loadImage("images/top.png");
@@ -39,10 +42,14 @@ int hR = right.getHeight();
 // The reason I call them like this is because if the image is read from top to bottom (xT = general X from Top image, and so on...)
 // if the 2 values in X, Y or Z match then that will be fed into the final position of the voxel, meaning generalX = xT when equals to xL
 
+// The next lines read the info of the pixels in each image
+
 for (int xT = 0; xT < wT; xT++) {
     for(int zT = 0; zT < hT; zT++) {
-        for (int xL = 0; xT < wL; xL++) {
+
+        for (int xL = 0; xL < wL; xL++) {
             for(int yL = 0; yL < hL; yL++) {
+
                 for (int zR = 0; zR < wR; zR++) {
                         for(int yR = 0; yR < hR; yR++) {
 
@@ -63,6 +70,7 @@ for (int xT = 0; xT < wT; xT++) {
                                                             Voxel thisVoxel;
                                                             thisVoxel.setInit(voxPos*1.3,voxSize,ofColor::red);
                                                             myVoxels.push_back(thisVoxel);
+                                                }
                                             }
                                         }
                                     }
@@ -74,26 +82,6 @@ for (int xT = 0; xT < wT; xT++) {
             }
         }
     }
-}
-
-// This is the code that belonged to the 1 image voxel matrix, keeping it as reference.
-// for(int y = 0; y < h; y++)
-//  {
-//		for(int x = 0; x < w; x++)
-//      {
-//			ofColor voxColor = front.getColor(y,x);
-//          if (voxColor.a != 0)
-//              {
-//              int voxSize = 10;
-//			    ofPoint voxPos = ofPoint(x*voxSize,y*voxSize,0);
-//			    Voxel thisVoxel;
-//			    thisVoxel.setInit(voxPos*1.3,voxSize,voxColor);
-//			    myVoxels.push_back(thisVoxel);
-//			    }
-//		}
-//	}
-
-
 
 }
 
