@@ -57,9 +57,7 @@ for (int xT = 0; xT < wT; xT++) {
                             ofColor lColor = left.getColor(xL,yL);
                             ofColor rColor = right.getColor(zR,yR);
 
-                                  if (tColor.a != 0) {
-                                          if (lColor.a != 0) {
-                                              if (rColor.a != 0) {
+                                  if (tColor.a > 1 && lColor.a > 1 && rColor.a > 1) {
 
                                                 if(xT==xL) { int x = xT;
                                                     if(yL==yR) { int y = yL;
@@ -68,10 +66,8 @@ for (int xT = 0; xT < wT; xT++) {
                                                             int voxSize = 10;
                                                             ofPoint voxPos = ofPoint(x*voxSize,y*voxSize,z*voxSize);
                                                             Voxel thisVoxel;
-                                                            thisVoxel.setInit(voxPos*1.3,voxSize,ofColor::red);
+                                                            thisVoxel.setInit(voxPos*1.3,voxSize,tColor);
                                                             myVoxels.push_back(thisVoxel);
-                                                }
-                                            }
                                         }
                                     }
                                 }
@@ -82,7 +78,6 @@ for (int xT = 0; xT < wT; xT++) {
             }
         }
     }
-
 }
 
 //--------------------------------------------------------------
