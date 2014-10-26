@@ -64,9 +64,10 @@ for (int xT = 0; xT < wT; xT++) {
                                                         if(zT==zR) { int z = zR;
 
                                                             int voxSize = 10;
+                                                            float voxDistance = 0; // 0 will make voxels stick together
                                                             ofPoint voxPos = ofPoint(x*voxSize,y*voxSize,z*voxSize);
                                                             Voxel thisVoxel;
-                                                            thisVoxel.setInit(voxPos*1.3,voxSize,tColor);
+                                                            thisVoxel.setInit(voxPos*(1+voxDistance),voxSize,tColor);
                                                             myVoxels.push_back(thisVoxel);
                                         }
                                     }
@@ -91,6 +92,9 @@ void ofApp::draw(){
 
 // Camera and light stuff... urgh need to figure out this better.
     cam.begin();
+
+    ofDrawGrid(100);
+
     light.enable();
     ofEnableLighting();
     glEnable(GL_DEPTH_TEST);
