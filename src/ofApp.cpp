@@ -12,14 +12,17 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
 
+ofEnableSmoothing();
+
+cam.setVFlip(true);
 ofSetVerticalSync(true);
 ofSetFrameRate(60);
 
 // load the images first
 
-top.loadImage("images/top.png");
-left.loadImage("images/left.png");
-right.loadImage("images/right.png");
+top.loadImage("images/linkT.png");
+left.loadImage("images/linkL.png");
+right.loadImage("images/linkR.png");
 
 // read the width and height of each image, needed to size the loops
 
@@ -93,13 +96,20 @@ void ofApp::draw(){
 // Camera and light stuff... urgh need to figure out this better.
     cam.begin();
 
-    ofDrawGrid(100);
+    //ofDrawGrid(100);
 
     light.enable();
     ofEnableLighting();
     glEnable(GL_DEPTH_TEST);
 
 // draw every voxel
+\
+ofFill();
+
+if (doFill){
+    ofNoFill();
+}
+
 for (int i = 0; i < myVoxels.size(); i++){
     myVoxels[i].draw();
     }
@@ -124,6 +134,12 @@ void ofApp::keyReleased(int key){
     if (key == 'f'){
         ofToggleFullscreen();
     }
+
+    if (key == 's'){
+        doFill = !doFill;
+
+    }
+
 }
 
 //--------------------------------------------------------------

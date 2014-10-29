@@ -39,4 +39,5 @@ class ofApp : public ofBaseApp{
 
         vector <Voxel> myVoxels;
 
+        bool doFill;
 };
